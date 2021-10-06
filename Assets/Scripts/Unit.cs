@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,8 +6,7 @@ using UnityEngine.AI;
 // Base class for all Unit. It will handle movement order given through the UserControl script.
 // It require a NavMeshAgent to navigate the scene.
 [RequireComponent(typeof(NavMeshAgent))]
-public abstract class Unit : MonoBehaviour,
-    UIMainScene.IUIInfoContent
+public abstract class Unit : MonoBehaviour,   UIMainScene.IUIInfoContent
 {
     public float Speed = 3;
 
@@ -30,7 +27,7 @@ public abstract class Unit : MonoBehaviour,
         SetColor(MainManager.Instance.TeamColor);
     }
 
-    void SetColor(Color c)
+    private void SetColor(Color c)
     {
         var colorHandler = GetComponentInChildren<ColorHandler>();
         if (colorHandler != null)
@@ -46,7 +43,7 @@ public abstract class Unit : MonoBehaviour,
             float distance = Vector3.Distance(m_Target.transform.position, transform.position);
             if (distance < 2.0f)
             {
-                m_Agent.isStopped = true;
+                m_Agent.isStopped = true;//
                 BuildingInRange();
             }
         }
